@@ -1,47 +1,167 @@
-<p>Formulario Reactivo</p>
-<form [formGroup]="form" (ngSubmit)="onSubmit()" >
-   <div class="form-group">
-    <label for="identifycation">Número de  Identificación</label>
-    <input type="number" class="form-control" id="identifycation" formControlName="identifycation">
-  </div>
-  <div class="form-group">
-    <label for="fullName">Nombre Completo</label>
-    <input type="text" class="form-control" id="fullName" formControlName="fullName">
-  </div>
-  <div class="form-group">
-    <label for="email">Correo</label>
-    <input type="email" class="form-control" id="email" formControlName="email">
-  </div>
-    <div class="form-group">
-    <label for="area">Area de Trabajo</label>
-    <input type="text" class="form-control" id="area" formControlName="area">
-  </div>
-   <div class="form-group">
-    <label for="date">Fecha</label>
-    <input type="date" class="form-control" id="date" formControlName="date">
-  </div>
+<!-- Container principal -->
+<div class="min-h-screen bg-base-200 py-8 px-4">
+  <div class="max-w-4xl mx-auto">
+    <!-- Header del formulario -->
+    <div class="text-center mb-8">
+      <h1 class="text-4xl font-bold text-base-content mb-2">Formulario de Solicitudes</h1>
+      <p class="text-base-content/70">Complete la información requerida para procesar su solicitud</p>
+    </div>
 
-  <div class="divider"></div>
+    <!-- Card principal del formulario -->
+    <div class="card bg-base-100 shadow-xl">
+      <div class="card-body">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" class="space-y-8">
+          <!-- Sección: Información Personal -->
+          <div>
+            <div class="flex items-center gap-3 mb-6">
+              <div class="badge badge-primary badge-lg">1</div>
+              <h2 class="text-2xl font-semibold text-base-content">Información Personal</h2>
+            </div>
 
-   <div class="form-group">
-    <label for="typeDescription">Tipo de Solicitud</label>
-    <select class="form-control" id="typeDescription" formControlName="typeDescription">
-      <option value="1">Solicitud de Mantenimiento</option>
-      <option value="2">Solicitud de Reclamo</option>
-      <option value="3">Solicitud de Consulta</option>
-      </select>
+            <!-- Grid responsivo para campos -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <!-- Número de Identificación -->
+              <div class="form-control w-full">
+                <label class="label">
+                  <span class="label-text font-medium">
+                    <span class="text-error">*</span> Número de Identificación
+                  </span>
+                </label>
+                <input type="number" placeholder="Ej: 1234567890"
+                  class="input input-bordered w-full focus:input-primary" id="identifycation"
+                  formControlName="identifycation" />
+              </div>
+
+              <!-- Nombre Completo -->
+              <div class="form-control w-full">
+                <label class="label">
+                  <span class="label-text font-medium">
+                    <span class="text-error">*</span> Nombre Completo
+                  </span>
+                </label>
+                <input type="text" placeholder="Ingrese su nombre completo"
+                  class="input input-bordered w-full focus:input-primary" id="fullName" formControlName="fullName" />
+              </div>
+
+              <!-- Email -->
+              <div class="form-control w-full">
+                <label class="label">
+                  <span class="label-text font-medium">
+                    <span class="text-error">*</span> Correo Electrónico
+                  </span>
+                </label>
+                <input type="email" placeholder="ejemplo@correo.com"
+                  class="input input-bordered w-full focus:input-primary" id="email" formControlName="email" />
+              </div>
+
+              <!-- Área de Trabajo -->
+              <div class="form-control w-full">
+                <label class="label">
+                  <span class="label-text font-medium">
+                    <span class="text-error">*</span> Área de Trabajo
+                  </span>
+                </label>
+                <input type="text" placeholder="Ej: Recursos Humanos, IT, Contabilidad"
+                  class="input input-bordered w-full focus:input-primary" id="area" formControlName="area" />
+              </div>
+            </div>
+
+            <!-- Fecha - Campo completo -->
+            <div class="form-control w-full max-w-md mt-6">
+              <label class="label">
+                <span class="label-text font-medium">
+                  <span class="text-error">*</span> Fecha de Solicitud
+                </span>
+              </label>
+              <input type="date" class="input input-bordered w-full focus:input-primary" id="date"
+                formControlName="date" />
+            </div>
+          </div>
+
+          <!-- Divider elegante -->
+          <div class="divider divider-primary">
+            <div class="badge badge-primary badge-outline">Detalles de la Solicitud</div>
+          </div>
+
+          <!-- Sección: Detalles de Solicitud -->
+          <div>
+            <div class="flex items-center gap-3 mb-6">
+              <div class="badge badge-secondary badge-lg">2</div>
+              <h2 class="text-2xl font-semibold text-base-content">Detalles de la Solicitud</h2>
+            </div>
+
+            <!-- Tipo de Solicitud -->
+            <div class="form-control w-full max-w-md mb-6">
+              <label class="label">
+                <span class="label-text font-medium">
+                  <span class="text-error">*</span> Tipo de Solicitud
+                </span>
+              </label>
+              <select class="select select-bordered w-full focus:select-primary" id="typeDescription"
+                formControlName="typeDescription">
+                <option disabled selected>Seleccione el tipo de solicitud</option>
+                <option value="1">🔧 Solicitud de Mantenimiento</option>
+                <option value="2">📋 Solicitud de Reclamo</option>
+                <option value="3">❓ Solicitud de Consulta</option>
+              </select>
+            </div>
+
+            <!-- Descripción -->
+            <div class="form-control w-full">
+              <label class="label">
+                <span class="label-text font-medium">
+                  <span class="text-error">*</span> Descripción de la Solicitud
+                </span>
+                <span class="label-text-alt">Máximo 500 caracteres</span>
+              </label>
+              <textarea class="textarea textarea-bordered h-32 resize-none focus:textarea-primary"
+                placeholder="Describa detalladamente su solicitud. Incluya toda la información relevante que pueda ayudar a procesar su petición de manera eficiente..."
+                id="description" formControlName="description"></textarea>
+            </div>
+          </div>
+
+          <!-- Alert informativo -->
+          <div class="alert alert-info">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+              class="stroke-current shrink-0 w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            <div>
+              <h3 class="font-bold">Información importante</h3>
+              <div class="text-xs">Los campos marcados con (*) son obligatorios. Su solicitud será procesada en un plazo
+                máximo de 3 días hábiles.</div>
+            </div>
+          </div>
+
+          <!-- Botones de acción -->
+          <div class="card-actions justify-end pt-4">
+            <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+
+              <!-- Botón Salir -->
+              <button type="button" class="btn btn-ghost btn-lg flex-1 sm:flex-none order-2 sm:order-1"
+                routerLink="/home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                  stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+                Volver al Inicio
+              </button>
+
+              <!-- Botón Enviar -->
+              <button type="submit" class="btn btn-primary btn-lg flex-1 sm:flex-none order-1 sm:order-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                  stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                </svg>
+                Enviar Solicitud
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
-
-     <div class="form-group">
-    <label for="description">Descripcion de Solicitud</label>
-    <input type="textarea" class="form-control" id="description" formControlName="description">
-  </div>
-
-
-  <button type="submit" class="btn btn-primary">Enviar Solicitud</button>
-
-</form>
-<button type="button" class="btn btn-info" routerLink="/home">Salir</button>
-  <!-- <div class="form-group">
-    <label for="email">Email</label>
-    <input -->
+</div>

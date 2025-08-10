@@ -1,0 +1,54 @@
+<div class="modal" [class.modal-open]="visible">
+  <!-- Fondo con efecto blur -->
+  <div class="modal-backdrop backdrop-blur-sm" (click)="onClose()"></div>
+
+  <!-- Contenedor del modal -->
+  <div class="modal-box max-w-4xl relative bg-base-100 shadow-2xl p-0">
+    <!-- Header -->
+    <div class="flex items-center justify-between p-6 border-b border-base-200">
+      <h2 class="text-2xl font-bold text-primary">Actualizar Respuesta IA</h2>
+      <button (click)="onClose()" class="btn btn-sm btn-circle btn-ghost">
+        ✕
+      </button>
+    </div>
+
+    <!-- Contenido -->
+    <div class="p-6 space-y-6">
+      <!-- Campo Descripción -->
+      <div class="form-control w-full">
+        <label class="label">
+          <span class="label-text font-semibold">Descripción:</span>
+        </label>
+        <input
+          type="text"
+          [value]="descripcion"
+          readonly
+          class="input input-bordered w-full bg-base-200 cursor-not-allowed"
+        >
+      </div>
+
+      <!-- Campo Respuesta IA -->
+      <div class="form-control w-full">
+        <label class="label">
+          <span class="label-text font-semibold">Respuesta IA:</span>
+        </label>
+        <textarea
+          [(ngModel)]="respuestaIA"
+          rows="8"
+          placeholder="Escribe la respuesta aquí..."
+          class="textarea textarea-bordered w-full font-mono text-sm"
+        ></textarea>
+      </div>
+    </div>
+
+    <!-- Footer/Acciones -->
+    <div class="modal-action p-6 border-t border-base-200">
+      <button (click)="onClose()" class="btn btn-ghost">
+        Cancelar
+      </button>
+      <button (click)="onSave()" class="btn btn-primary">
+        Guardar Cambios
+      </button>
+    </div>
+  </div>
+</div>

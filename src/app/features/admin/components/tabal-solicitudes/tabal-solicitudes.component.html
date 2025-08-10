@@ -3,34 +3,46 @@
     <!-- head -->
     <thead>
       <tr>
-        <th></th>
-        <th>Nombre Solcitante</th>
-        <th>Job</th>
-        <th>Favorite Color</th>
+        <th>#</th>
+        <th>Nombre Solicitante</th>
+        <th>Área</th>
+        <th>Tipo de solicitud</th>
+        <th>Descripción</th>
+        <th>Respuesta</th>
+        <th>Acciones</th>
       </tr>
     </thead>
     <tbody>
-      <!-- row 1 -->
-      <tr>
-        <th>1</th>
-        <td>Cy Ganderton</td>
-        <td>Quality Control Specialist</td>
-        <td>Blue</td>
+      <!-- Iterar sobre las solicitudes -->
+       <td></td>
+      <tr *ngFor="let solicitud of solicitude; let i = index">
+        <th>{{ i + 1 }}</th>
+        <td>{{ solicitud.fullName }}</td>
+        <td>{{ solicitud.area }}</td>
+        <td>{{ solicitud.typeDescription }}</td>
+        <td>{{ solicitud.description }}</td>
+        <td>{{ solicitud.respuestaIA }}</td>
+        <th>
+          <!-- Actualizar respuesta de solicitud -->
+           <button (click)="abrirModal(solicitud)">
+            Actualizar Respuesta
+            <i class="fa fa-edit"></i>
+           </button>
+
+
+
+        </th>
       </tr>
-      <!-- row 2 -->
-      <tr>
-        <th>2</th>
-        <td>Hart Hagerty</td>
-        <td>Desktop Support Technician</td>
-        <td>Purple</td>
-      </tr>
-      <!-- row 3 -->
-      <tr>
-        <th>3</th>
-        <td>Brice Swyre</td>
-        <td>Tax Accountant</td>
-        <td>Red</td>
-      </tr>
+
     </tbody>
   </table>
+
+  <app-modal
+    [descripcion]="solicitudSeleccionada?.description ?? ''"
+    [respuestaIA]="solicitudSeleccionada?.respuestaIA ?? ''"
+    [visible]="modalVisible"
+    (close)="cerrarModal()"
+    (save)="guardarRespuesta($event)"
+  ></app-modal>
+
 </div>

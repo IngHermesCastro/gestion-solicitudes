@@ -16,7 +16,12 @@ export const routes: Routes = [
   {
     path: 'solicitud',
     loadChildren: () => import('./features/solicitudes/solicitud.routes').then(m => m.routes)
-  }
+  },
+  {
+    path: 'dashboard',
+    loadChildren: () => import('./features/admin/admin.routes').then(m => m.routes)
+  },
+
 
 
 

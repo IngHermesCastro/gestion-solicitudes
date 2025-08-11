@@ -17,6 +17,7 @@ Este proyecto es una **aplicación web para gestión de solicitudes de soporte**
 - **Autenticación**: Firebase Auth
 - **Inteligencia Artificial**: Para las respuestas a las solicitudes de soporte, el sistema utiliza la API de Gemini para generar el contenido automáticamente.
 - **Dashboard de Soporte**: El administrador puede listar todas las solicitudes, modificarlas y enviar por correo electrónico las respuestas actualizadas.
+- **ACCEDE Y VISUALIZALO**: Puede acceder al enlace para visualizar el aplicativo y su correcto funcionamiento. https://tablas-de-referencia.web.app/
 
 
 

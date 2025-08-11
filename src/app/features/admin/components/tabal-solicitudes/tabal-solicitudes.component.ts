@@ -19,7 +19,7 @@ export class TabalSolicitudesComponent {
   modalVisible = false;
 
   solicitude: Solicitude[] = [];
-  solicitudSeleccionada: Solicitude | null = null; // Solicitud seleccionada para el modal
+  solicitudSeleccionada: Solicitude | null = null;
 
   constructor(private solicitudesService: SolicitudesService, private cdr: ChangeDetectorRef) {}
 
@@ -32,13 +32,13 @@ export class TabalSolicitudesComponent {
   }
 
   abrirModal(solicitud: Solicitude): void {
-    this.solicitudSeleccionada = { ...solicitud }; // Clonar la solicitud seleccionada
+    this.solicitudSeleccionada = { ...solicitud };
     this.modalVisible = true;
   }
 
   cerrarModal(): void {
     this.modalVisible = false;
-    this.solicitudSeleccionada = null; // Limpiar la solicitud seleccionada
+    this.solicitudSeleccionada = null;
   }
 
   guardarRespuesta(nuevaRespuesta: string): void {
@@ -55,8 +55,6 @@ export class TabalSolicitudesComponent {
             solicitud.respuestaIA = nuevaRespuesta;
           }
           this.cdr.detectChanges();
-
-          // Mostrar SweetAlert de éxito
           Swal.fire({
             icon: 'success',
             title: '¡Éxito!',

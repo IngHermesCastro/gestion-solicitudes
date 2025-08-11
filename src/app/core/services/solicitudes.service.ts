@@ -3,31 +3,51 @@ import { Injectable } from '@angular/core';
 import { ListaSolicitudes } from '../../interface/listar.interface';
 import { Observable } from 'rxjs';
 import { ActualizarRespuesta } from '../../interface/actualizar.interface';
+import { environment } from '../../environment/environment';
 
-@Injectable({providedIn: 'root'})
+export interface Solicitud {
+  fullName: string;
+  email: string;
+  identifycation: string;
+  area: string;
+  date: string;
+  typeDescription: string;
+  description: string;
+}
+export interface RespuestaBackend {
+  id: string;
+  respuesta?: string;
+  mensaje?: string;
+}
+
+
+@Injectable({ providedIn: 'root' })
 export class SolicitudesService {
-   private readonly API_URL = 'https://us-central1-tablas-de-referencia.cloudfunctions.net/listarSolicitudes';
 
-
-
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   // metodo para obtener las solicitudes
   listarSolicitudes(): Observable<ListaSolicitudes> {
-    return this.http.get<ListaSolicitudes>(this.API_URL);
+    return this.http.get<ListaSolicitudes>(`${environment.apiUrl}/listarSolicitudes`);
   }
   // metodo para actualizar una Respuesta
-actualizarRespuesta(id: string, nuevaRespuesta: string): Observable<ActualizarRespuesta> {
-  const url = `https://us-central1-tablas-de-referencia.cloudfunctions.net/actualizarRespuestaIA`;
-  const body = {
-    id: id,
-    nuevaRespuesta: nuevaRespuesta
-  };
+  actualizarRespuesta(id: string, nuevaRespuesta: string): Observable<ActualizarRespuesta> {
+    const url = `${environment.apiUrl}/actualizarRespuestaIA`;
+    const body = {
+      id: id,
+      nuevaRespuesta: nuevaRespuesta
+    };
 
-  const headers = new HttpHeaders({
-    'Content-Type': 'application/json'
-  });
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
 
-  return this.http.patch<ActualizarRespuesta>(url, body, { headers });
-}
+    return this.http.patch<ActualizarRespuesta>(url, body, { headers });
+  }
+
+  //Metodo para Crear nueva solicitud
+  crearSolicitud(solicitud: Solicitud): Observable<RespuestaBackend> {
+    return this.http.post<RespuestaBackend>(`${environment.apiUrl}/generarRespuestaIA`, solicitud);
+  }
+
 }

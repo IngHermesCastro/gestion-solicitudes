@@ -1,6 +1,5 @@
-<div class="overflow-x-auto">
-  <table class="table table-zebra">
-    <!-- head -->
+<div class="overflow-x-auto w-full">
+  <table class="table table-zebra w-full min-w-max">
     <thead>
       <tr>
         <th>#</th>
@@ -13,36 +12,24 @@
       </tr>
     </thead>
     <tbody>
-      <!-- Iterar sobre las solicitudes -->
-       <td></td>
       <tr *ngFor="let solicitud of solicitude; let i = index">
         <th>{{ i + 1 }}</th>
-        <td>{{ solicitud.fullName }}</td>
+        <td class="whitespace-normal break-words max-w-xs">{{ solicitud.fullName }}</td>
         <td>{{ solicitud.area }}</td>
-        <td>{{ solicitud.typeDescription }}</td>
-        <td>{{ solicitud.description }}</td>
-        <td>{{ solicitud.respuestaIA }}</td>
-        <th>
-          <!-- Actualizar respuesta de solicitud -->
-           <button (click)="abrirModal(solicitud)">
-            Actualizar Respuesta
+        <td class="whitespace-normal break-words max-w-xs">{{ solicitud.typeDescription }}</td>
+        <td class="whitespace-normal break-words max-w-xs">{{ solicitud.description }}</td>
+        <td class="whitespace-normal break-words max-w-xs">{{ solicitud.respuestaIA }}</td>
+        <td>
+          <button class="btn btn-sm btn-primary flex items-center gap-2" (click)="abrirModal(solicitud)">
             <i class="fa fa-edit"></i>
-           </button>
-
-
-
-        </th>
+            <span class="hidden sm:inline">Actualizar</span>
+          </button>
+        </td>
       </tr>
-
     </tbody>
   </table>
 
-  <app-modal
-    [descripcion]="solicitudSeleccionada?.description ?? ''"
-    [respuestaIA]="solicitudSeleccionada?.respuestaIA ?? ''"
-    [visible]="modalVisible"
-    (close)="cerrarModal()"
-    (save)="guardarRespuesta($event)"
-  ></app-modal>
-
+  <app-modal [descripcion]="solicitudSeleccionada?.description ?? ''"
+    [respuestaIA]="solicitudSeleccionada?.respuestaIA ?? ''" [visible]="modalVisible" (close)="cerrarModal()"
+    (save)="guardarRespuesta($event)"></app-modal>
 </div>

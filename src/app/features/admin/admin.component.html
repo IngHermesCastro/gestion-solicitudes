@@ -1,8 +1,23 @@
 <div class="container-fluid mt-3 pt-5">
   <section>
-    <app-navbar></app-navbar>
+    <app-navbar (logoutEvent)="logout()"></app-navbar>
   </section>
   <section>
     <tabla-solicitudes></tabla-solicitudes>
   </section>
 </div>
+
+
+
+
+<!-- <div class="dashboard-container">
+  <header>
+    <h1>Bienvenido, {{ userData?.displayName || userData?.email }}</h1>
+    <button (click)="logout()">Cerrar Sesión</button>
+  </header>
+
+  <main>
+    <p>UID: {{ userData?.uid }}</p>
+    <p>Email: {{ userData?.email }}</p>
+  </main>
+</div> -->

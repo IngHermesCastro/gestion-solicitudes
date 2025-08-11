@@ -11,11 +11,15 @@ const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
     user: "1hermescastro@gmail.com",
+    // user: process.env.CORREO_GMAIL_USER,
+    // pass: process.env.CORREO_GMAIL_PASSWORD,
     pass: "dbdm obwb wwqc qvow",
   },
 });
 
 const GEMINI_API_KEY = 'AIzaSyAoCJxZB7yx5CQAtxU1nkmICDSTJ5L68CM';
+// const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
+// const GEMINI_MODEL = process.env.GEMINI_API_MODEL;
 const GEMINI_MODEL = "gemini-2.0-flash";
 
 export const generarRespuestaIA = onRequest(async (req, res) => {
@@ -212,7 +216,7 @@ export const actualizarRespuestaIA = onRequest(async (req, res) => {
     // Enviar correo al usuario
     if (solicitud?.email) {
       await transporter.sendMail({
-        from: '"Soporte IT" <tu_correo@gmail.com>',
+        from: '"Soporte IT" <1hermescastro@gmail.com>',
         to: solicitud.email,
         subject: "Actualización de respuesta de soporte",
         text: `Hola ${solicitud.fullName},\n\nSe ha actualizado la respuesta a tu solicitud:\n\n${nuevaRespuesta}\n\nSaludos,\nEquipo de Soporte IT`,

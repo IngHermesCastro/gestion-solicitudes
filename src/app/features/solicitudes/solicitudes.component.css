@@ -1,3 +1,241 @@
-:host {
-  display: block;
+
+.input-error, .select-error, .textarea-error {
+  animation: shake 0.3s ease-in-out;
+  border-color: #ef4444 !important;
+  box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.2) !important;
+}
+
+.input-success, .select-success, .textarea-success {
+  border-color: #10b981 !important;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2) !important;
+}
+
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+}
+
+
+.label-text-alt.text-error {
+  animation: slideDown 0.3s ease-out;
+  font-weight: 500;
+}
+
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.input-success:hover, .select-success:hover, .textarea-success:hover {
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.3) !important;
+}
+
+
+.input-error:hover, .select-error:hover, .textarea-error:hover {
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.3) !important;
+}
+
+
+.alert-error {
+  animation: slideDown 0.4s ease-out;
+  border-left: 4px solid #ef4444;
+}
+
+
+.label-text .text-error {
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+
+.input, .select, .textarea {
+  transition: all 0.2s ease-in-out;
+}
+
+
+.input:focus, .select:focus, .textarea:focus {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+}
+
+
+.label-text-alt {
+  font-weight: 500;
+  transition: color 0.2s ease-in-out;
+}
+
+
+.character-count-warning {
+  color: #f59e0b !important;
+  font-weight: 600;
+}
+
+.character-count-danger {
+  color: #ef4444 !important;
+  font-weight: 600;
+}
+
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+
+.btn.loading {
+  pointer-events: none;
+}
+
+.btn.loading::before {
+  content: "";
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+  border: 2px solid transparent;
+  border-top: 2px solid currentColor;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+.form-control:has(.input-error) .label-text,
+.form-control:has(.select-error) .label-text,
+.form-control:has(.textarea-error) .label-text {
+  color: #ef4444;
+  font-weight: 600;
+}
+
+
+.label-text-alt.text-error svg {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+
+@media (max-width: 640px) {
+  .shake {
+    animation: shakeMobile 0.3s ease-in-out;
+  }
+
+  @keyframes shakeMobile {
+    0%, 100% {
+      transform: translateX(0);
+    }
+    25% {
+      transform: translateX(-3px);
+    }
+    75% {
+      transform: translateX(3px);
+    }
+  }
+}
+
+
+.field-validating {
+  border-color: #3b82f6 !important;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2) !important;
+}
+
+
+.divider-primary {
+  margin: 2rem 0;
+}
+
+.divider-primary::before,
+.divider-primary::after {
+  background: linear-gradient(90deg, transparent, #3b82f6, transparent);
+  height: 2px;
+}
+
+
+.alert-info {
+  border-left: 4px solid #3b82f6;
+  /* background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(59, 130, 246, 0.05)); */
+}
+
+
+.form-section:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+
+.input-success::after,
+.select-success::after,
+.textarea-success::after {
+  content: "✓";
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #10b981;
+  font-weight: bold;
+  font-size: 18px;
+  pointer-events: none;
+}
+
+
+.form-control {
+  position: relative;
+}
+
+
+.form-sending {
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+.form-sending .input,
+.form-sending .select,
+.form-sending .textarea {
+  background-color: #f3f4f6;
+}
+
+
+.badge-lg {
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+
+.input:focus-within,
+.select:focus-within,
+.textarea:focus-within {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }

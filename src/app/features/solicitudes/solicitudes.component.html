@@ -28,8 +28,22 @@
                   </span>
                 </label>
                 <input type="number" placeholder="Ej: 1234567890"
-                  class="input input-bordered w-full focus:input-primary" id="identifycation"
+                  class="input input-bordered w-full focus:input-primary"
+                  [class.input-error]="isFieldInvalid('identifycation')"
+                  [class.input-success]="isFieldValid('identifycation')" id="identifycation"
                   formControlName="identifycation" />
+
+                <!-- Mensajes de error -->
+                <div class="label" *ngIf="isFieldInvalid('identifycation')">
+                  <span class="label-text-alt text-error flex items-center gap-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                      stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    {{ getErrorMessage('identifycation') }}
+                  </span>
+                </div>
               </div>
 
               <!-- Nombre Completo -->
@@ -40,7 +54,21 @@
                   </span>
                 </label>
                 <input type="text" placeholder="Ingrese su nombre completo"
-                  class="input input-bordered w-full focus:input-primary" id="fullName" formControlName="fullName" />
+                  class="input input-bordered w-full focus:input-primary"
+                  [class.input-error]="isFieldInvalid('fullName')" [class.input-success]="isFieldValid('fullName')"
+                  id="fullName" formControlName="fullName" />
+
+                <!-- Mensajes de error -->
+                <div class="label" *ngIf="isFieldInvalid('fullName')">
+                  <span class="label-text-alt text-error flex items-center gap-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                      stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    {{ getErrorMessage('fullName') }}
+                  </span>
+                </div>
               </div>
 
               <!-- Email -->
@@ -51,7 +79,20 @@
                   </span>
                 </label>
                 <input type="email" placeholder="ejemplo@correo.com"
-                  class="input input-bordered w-full focus:input-primary" id="email" formControlName="email" />
+                  class="input input-bordered w-full focus:input-primary" [class.input-error]="isFieldInvalid('email')"
+                  [class.input-success]="isFieldValid('email')" id="email" formControlName="email" />
+
+                <!-- Mensajes de error -->
+                <div class="label" *ngIf="isFieldInvalid('email')">
+                  <span class="label-text-alt text-error flex items-center gap-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                      stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    {{ getErrorMessage('email') }}
+                  </span>
+                </div>
               </div>
 
               <!-- Área de Trabajo -->
@@ -62,7 +103,20 @@
                   </span>
                 </label>
                 <input type="text" placeholder="Ej: Recursos Humanos, IT, Contabilidad"
-                  class="input input-bordered w-full focus:input-primary" id="area" formControlName="area" />
+                  class="input input-bordered w-full focus:input-primary" [class.input-error]="isFieldInvalid('area')"
+                  [class.input-success]="isFieldValid('area')" id="area" formControlName="area" />
+
+                <!-- Mensajes de error -->
+                <div class="label" *ngIf="isFieldInvalid('area')">
+                  <span class="label-text-alt text-error flex items-center gap-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                      stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    {{ getErrorMessage('area') }}
+                  </span>
+                </div>
               </div>
             </div>
 
@@ -73,8 +127,21 @@
                   <span class="text-error">*</span> Fecha de Solicitud
                 </span>
               </label>
-              <input type="date" class="input input-bordered w-full focus:input-primary" id="date"
+              <input type="date" class="input input-bordered w-full focus:input-primary"
+                [class.input-error]="isFieldInvalid('date')" [class.input-success]="isFieldValid('date')" id="date"
                 formControlName="date" />
+
+              <!-- Mensajes de error -->
+              <div class="label" *ngIf="isFieldInvalid('date')">
+                <span class="label-text-alt text-error flex items-center gap-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  {{ getErrorMessage('date') }}
+                </span>
+              </div>
             </div>
           </div>
 
@@ -97,13 +164,27 @@
                   <span class="text-error">*</span> Tipo de Solicitud
                 </span>
               </label>
-              <select class="select select-bordered w-full focus:select-primary" id="typeDescription"
+              <select class="select select-bordered w-full focus:select-primary"
+                [class.select-error]="isFieldInvalid('typeDescription')"
+                [class.select-success]="isFieldValid('typeDescription')" id="typeDescription"
                 formControlName="typeDescription">
                 <option disabled selected>Seleccione el tipo de solicitud</option>
                 <option value="1">🔧 Solicitud de Mantenimiento</option>
                 <option value="2">📋 Solicitud de Reclamo</option>
                 <option value="3">❓ Solicitud de Consulta</option>
               </select>
+
+              <!-- Mensajes de error -->
+              <div class="label" *ngIf="isFieldInvalid('typeDescription')">
+                <span class="label-text-alt text-error flex items-center gap-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  {{ getErrorMessage('typeDescription') }}
+                </span>
+              </div>
             </div>
 
             <!-- Descripción -->
@@ -115,8 +196,37 @@
                 <span class="label-text-alt">Máximo 500 caracteres</span>
               </label>
               <textarea class="textarea textarea-bordered h-32 resize-none focus:textarea-primary"
+                [class.textarea-error]="isFieldInvalid('description')"
+                [class.textarea-success]="isFieldValid('description')"
                 placeholder="Describa detalladamente su solicitud. Incluya toda la información relevante que pueda ayudar a procesar su petición de manera eficiente..."
-                id="description" formControlName="description"></textarea>
+                id="description" formControlName="description" maxlength="500"></textarea>
+
+              <!-- Contador de caracteres y mensajes de error -->
+              <div class="label">
+                <span class="label-text-alt text-error flex items-center gap-1" *ngIf="isFieldInvalid('description')">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  {{ getErrorMessage('description') }}
+                </span>
+                <span class="label-text-alt">{{ getCharacterCount() }}/500 caracteres</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Alert de errores generales (cuando hay errores múltiples) -->
+          <div class="alert alert-error" *ngIf="showFormErrors && !form.valid">
+            <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none"
+              viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <div>
+              <h3 class="font-bold">¡Hay errores en el formulario!</h3>
+              <div class="text-xs">Por favor, revise los campos marcados en rojo y corrija los errores antes de
+                continuar.</div>
             </div>
           </div>
 
@@ -150,13 +260,14 @@
               </button>
 
               <!-- Botón Enviar -->
-              <button type="submit" class="btn btn-primary btn-lg flex-1 sm:flex-none order-1 sm:order-2">
+              <button type="submit" class="btn btn-primary btn-lg flex-1 sm:flex-none order-1 sm:order-2"
+                [class.loading]="enviando" [disabled]="enviando">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
-                  stroke="currentColor">
+                  stroke="currentColor" *ngIf="!enviando">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                     d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
                 </svg>
-                Enviar Solicitud
+                {{ enviando ? 'Enviando...' : 'Enviar Solicitud' }}
               </button>
             </div>
           </div>

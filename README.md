@@ -41,6 +41,7 @@ ng version        # Debe mostrar Angular CLI v19+
 git --version     # Verificar que Git esté instalado
 
 
+```
 ## 🚀 Instalación y Configuración
 Paso 1: Clonar el Repositorio
 ```bash

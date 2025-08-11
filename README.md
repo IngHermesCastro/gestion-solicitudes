@@ -53,11 +53,15 @@ Paso 2: Instalar Dependencias
 ```bash
 npm install
 ```
-Paso 3: Iniciar el Servidor de Desarrollo
+Paso 3: Instalar Angular CLI
+```bash
+npm install -g @angular/cli
+```
+Paso 4: Iniciar el Servidor de Desarrollo
 ```bash
 ng serve
 ```
-Paso 4: Abrir la Aplicación en tu navegador
+Paso 5: Abrir la Aplicación en tu navegador
 ```bash
 Abre tu navegador y ve a: http://localhost:4200
 La aplicación se recargará automáticamente cuando hagas cambios en el código

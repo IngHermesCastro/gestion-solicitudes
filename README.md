@@ -1,59 +1,37 @@
-# Gestionsolicitudes
+# 🎯 Gestión de Solicitudes de Soporte
+### Frontend Angular 19 + Backend Firebase Functions
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.10.
+[![Angular](https://img.shields.io/badge/Angular-19-red?style=flat&logo=angular)](https://angular.io/)
+[![Firebase](https://img.shields.io/badge/Firebase-Functions-orange?style=flat&logo=firebase)](https://firebase.google.com/)
+[![Node.js](https://img.shields.io/badge/Node.js-18+-green?style=flat&logo=node.js)](https://nodejs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-Latest-blue?style=flat&logo=typescript)](https://www.typescriptlang.org/)
 
-## Development server
+---
 
-To start a local development server, run:
+## 📋 Descripción
 
+Este proyecto es una **aplicación web para gestión de solicitudes de soporte** que incluye:
+- **Frontend**: Angular 19 con interfaz moderna y responsiva
+- **Backend**: Firebase Functions (ya desplegado en la nube)
+- **Base de datos**: Firestore
+- **Autenticación**: Firebase Auth
+
+> **Nota importante:** El backend ya está desplegado y funcionando en Firebase Cloud Functions, por lo que **solo necesitas configurar el frontend** para comenzar a trabajar.
+
+---
+
+## 🛠️ Requisitos Previos
+
+Antes de comenzar, asegúrate de tener instalado:
+
+| Herramienta | Versión Mínima | Comando de Instalación |
+|-------------|----------------|------------------------|
+| **Node.js** | v18+ (LTS recomendado) | [Descargar aquí](https://nodejs.org/) |
+| **Angular CLI** | v19+ | `npm install -g @angular/cli` |
+| **Git** | Cualquier versión | [Descargar aquí](https://git-scm.com/) |
+
+### Verificar instalaciones:
 ```bash
-ng serve
-```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+node --version    # Debe mostrar v18 o superior
+ng version        # Debe mostrar Angular CLI v19+
+git --version     # Verificar que Git esté instalado

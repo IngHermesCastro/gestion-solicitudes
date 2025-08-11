@@ -15,6 +15,10 @@ Este proyecto es una **aplicación web para gestión de solicitudes de soporte**
 - **Backend**: Firebase Functions (ya desplegado en la nube)
 - **Base de datos**: Firestore
 - **Autenticación**: Firebase Auth
+- **Inteligencia Artificial**: Para las respuestas a las solicitudes de soporte, el sistema utiliza la API de Gemini para generar el contenido automáticamente.
+- **Dashboard de Soporte**: El administrador puede listar todas las solicitudes, modificarlas y enviar por correo electrónico las respuestas actualizadas.
+
+
 
 > **Nota importante:** El backend ya está desplegado y funcionando en Firebase Cloud Functions, por lo que **solo necesitas configurar el frontend** para comenzar a trabajar.
 
@@ -35,3 +39,25 @@ Antes de comenzar, asegúrate de tener instalado:
 node --version    # Debe mostrar v18 o superior
 ng version        # Debe mostrar Angular CLI v19+
 git --version     # Verificar que Git esté instalado
+
+
+🚀 Instalación y Configuración
+Paso 1: Clonar el Repositorio
+```bash
+git clone https://github.com/IngHermesCastro/gestion-solicitudes.git
+
+cd gestion-solicitudes
+```
+Paso 2: Instalar Dependencias
+```bash
+npm install
+```
+Paso 3: Iniciar el Servidor de Desarrollo
+```bash
+ng serve
+```
+Paso 4: Abrir la Aplicación en tu navegador
+```bash
+Abre tu navegador y ve a: http://localhost:4200
+La aplicación se recargará automáticamente cuando hagas cambios en el código
+```

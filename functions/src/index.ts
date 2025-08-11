@@ -2,6 +2,8 @@ import { onRequest } from "firebase-functions/v2/https";
 import * as admin from "firebase-admin";
 import fetch from "node-fetch"; // Para hacer llamadas HTTP a Gemini
 import nodemailer from "nodemailer";
+import * as functions from "firebase-functions";
+
 
 admin.initializeApp();
 
@@ -9,19 +11,12 @@ const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
     user: "1hermescastro@gmail.com",
-    pass: "dbdm obwb wwqc qvow", // No tu contraseña normal, sino una App Password
+    pass: "dbdm obwb wwqc qvow",
   },
 });
 
-
-// interface SolicitudData {
-//   tipo: string;
-//   descripcion: string;
-//   usuarioEmail?: string;
-// }
-
-const GEMINI_API_KEY = 'AIzaSyAoCJxZB7yx5CQAtxU1nkmICDSTJ5L68CM'; // Mejor usar variables de entorno
-const GEMINI_MODEL = "gemini-2.0-flash"; // Modelo rápido y económico
+const GEMINI_API_KEY = 'AIzaSyAoCJxZB7yx5CQAtxU1nkmICDSTJ5L68CM';
+const GEMINI_MODEL = "gemini-2.0-flash";
 
 export const generarRespuestaIA = onRequest(async (req, res) => {
   res.set("Access-Control-Allow-Origin", "*");
@@ -235,5 +230,27 @@ export const actualizarRespuestaIA = onRequest(async (req, res) => {
       error: "Error al actualizar la respuesta",
       detalle: error instanceof Error ? error.message : "Error desconocido",
     });
+  }
+});
+
+// =====================
+// MI END POINT PARA INICIAR SESIÓN - Login
+// =====================
+export const verificarToken = functions.https.onRequest(async (req, res) => {
+  const idToken = req.headers.authorization?.split("Bearer ")[1];
+
+  if (!idToken) {
+    res.status(403).send("No autorizado");
+    return;
+  }
+
+  try {
+    const decodedToken = await admin.auth().verifyIdToken(idToken);
+    res.status(200).json({
+      uid: decodedToken.uid,
+      email: decodedToken.email
+    });
+  } catch (error) {
+    res.status(403).send("Token inválido");
   }
 });

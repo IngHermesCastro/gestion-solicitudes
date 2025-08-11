@@ -41,7 +41,7 @@ ng version        # Debe mostrar Angular CLI v19+
 git --version     # Verificar que Git esté instalado
 
 
-🚀 Instalación y Configuración
+## 🚀 Instalación y Configuración
 Paso 1: Clonar el Repositorio
 ```bash
 git clone https://github.com/IngHermesCastro/gestion-solicitudes.git

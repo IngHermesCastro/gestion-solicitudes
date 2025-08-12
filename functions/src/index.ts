@@ -10,17 +10,17 @@ admin.initializeApp();
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: "1hermescastro@gmail.com",
-    // user: process.env.CORREO_GMAIL_USER,
-    // pass: process.env.CORREO_GMAIL_PASSWORD,
-    pass: "dbdm obwb wwqc qvow",
+    
+    user: process.env.CORREO_GMAIL_USER,
+    pass: process.env.CORREO_GMAIL_PASSWORD,
+   
   },
 });
 
-const GEMINI_API_KEY = 'AIzaSyAoCJxZB7yx5CQAtxU1nkmICDSTJ5L68CM';
-// const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
-// const GEMINI_MODEL = process.env.GEMINI_API_MODEL;
-const GEMINI_MODEL = "gemini-2.0-flash";
+
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
+const GEMINI_MODEL = process.env.GEMINI_API_MODEL;
+
 
 export const generarRespuestaIA = onRequest(async (req, res) => {
   res.set("Access-Control-Allow-Origin", "*");
